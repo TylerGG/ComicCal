@@ -1,3 +1,3 @@
-# COMICAL Server
+# Comical Server
 
-Built using expressjs & mongoose
+Built with expressjs & mongoose

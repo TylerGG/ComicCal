@@ -1,3 +1,3 @@
-# Comical Client
+# Comical client
 
 Built with angularjs
