@@ -10,17 +10,19 @@ router.get('/', function(req, res) {
 
 router.post('/login',function(req,res) {
 	var form = req.body;
+
+	console.log(form);
 	User.findOne({username:form.username},function(err,user) {
 		if(err) throw err;
 		if(!user) {
 			console.log('user not found?');
-			res.redirect('/users');
+			res.json({error:'User not found'});
 		} else {
 			user.comparePassword(form.password,function(err,isMatch) {
 				if(err) throw err;
 				if(isMatch) {
 					req.session.user = user;
-					res.redirect('/users/test');
+					res.json({userId:user._id,apiToken:user.api_token});
 				}
 			});
 		}
@@ -43,23 +45,24 @@ router.post('/signup',function(req,res) {
 		username:form.username,
 		password:form.password
 	},function(err,user) {
-		req.session.user = user;
-		res.json(req.session);
+
+		if(err) {
+			res.json({error:"An error has occured making your account."});
+		}
+
+		res.json({userId:user._id,apiToken:user.api_token});
 	});
 });
 
 router.get('/logout',function(req,res) {
 	req.session.destroy(function(err) {
 		if(err) throw err;
-		res.redirect('/');
+		res.json({result:1});	
 	});
 });
 
 router.get('/test',restrict,function(req,res) {
 	res.end('you are authed');
 });
-
-
-
 
 module.exports = router;
