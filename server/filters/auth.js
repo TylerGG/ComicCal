@@ -3,7 +3,7 @@ function restrict(req,res,next) {
 		next();
 	} else {
 		req.session.error = 'Not Authorized';
-		res.redirect('/users/login');
+		res.redirect('/users');
 	}
 }
 
