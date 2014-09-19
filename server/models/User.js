@@ -1,11 +1,18 @@
 var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt'),
+	crypto = require('crypto'),
 	SALTINESS = 10;
 
 var UserSchema = new mongoose.Schema({
 	username: { type:String,require:true,index:{unique:true} },
-	password: { type:String,require:true }
+	password: { type:String,require:true },
+	api_token: { type:String }
 });
+
+
+UserSchema.methods.generateToken = function() {
+	return crypto.createHash('md5').update(this.username + new Date().toString()).digest('hex');
+};
 
 
 /* Before save salt password */
@@ -19,6 +26,7 @@ UserSchema.pre('save', function(next) {
 		bcrypt.hash(user.password,salt,function(err,hash){
 			if(err) next(err);
 			user.password = hash;
+			user.api_token = user.generateToken();
 			next();
 		});
 	});
