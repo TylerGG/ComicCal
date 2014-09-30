@@ -3,6 +3,7 @@ var Publisher = require('../models/Publisher');
 var Series = require('../models/Series');
 var Issue = require('../models/Issue');
 var router = express.Router();
+var auth = require('../filters/auth');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -13,6 +14,10 @@ router.get('/', function(req, res) {
 
 });
 
+
+router.get('/auth',auth,function(req,res) {
+	res.json({msg:'ok'});
+});
 
 /*
  * Temporary route for debugging
