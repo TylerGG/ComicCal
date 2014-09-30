@@ -1,7 +1,7 @@
 "use strict";
 var app = angular.module('comicCal');
 
-app.controller('LoginCtrl', ['$scope' , '$SeriesFactory', function($scope, $SeriesFactory) {
+app.controller('LoginCtrl', ['$scope' ,  function($scope) {
 	$scope.login = function() {
 		alert("login");
 	};
@@ -9,7 +9,4 @@ app.controller('LoginCtrl', ['$scope' , '$SeriesFactory', function($scope, $Seri
 	$scope.register = function() {
 		alert("register")
 	};
-
-	$scope.series = $SeriesFactory.subscribedSeries();
-
 }]);

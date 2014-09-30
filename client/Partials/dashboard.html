@@ -7,13 +7,15 @@
 			<thead>
 				<tr>
 					<td>Title</td>
+					<td>Publisher</td>
 					<td>Current Issue</td>
 					<td>Next Issue Release Date</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng:repeat="s in series">
+				<tr ng-repeat="s in series">
 					<td>{{s.title}}</td>
+					<td>{{s.publisher}}</td>
 					<td>{{s.currentIssue}}</td>
 					<td>{{s.nextIssueDate}}</td>
 				</tr>
