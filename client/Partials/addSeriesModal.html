@@ -1,0 +1,28 @@
+<div>
+	<form name="addSeries" >
+		<div class="row">
+			<div class="col-md-6">
+				<label>Select A Publisher</label>
+			</div>
+			<div class="col-md-6">
+				<select ng-options="p as p for p in publishers" name="publisher" ng-model="publisher" ng-change="publisherChange()">
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<label>Select A Series</label>
+			</div>
+			<div class="col-md-6">
+				<select ng-disabled="!publisher" ng-options="s as s for s in seriesList" name="series" ng-model="series"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button ng-disabled="series === ''" type="button" class="btn btn-primary" ng-click="add()">Follow Series</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
