@@ -1,6 +1,8 @@
 "use strict";
 var app = angular.module('comicCal');
 
+/* needs refactor to call server */
+
 app.factory('SeriesFactory', function() {
 	var factory = {};
 
