@@ -35,6 +35,7 @@ router.get('/signup',function(req,res) {
 
 router.post('/signup',function(req,res) {
 	var form = req.body;
+
 	if(form.password != form.confirm_password) {
 		res.json({
 			error:"Passwords do not match"
@@ -47,10 +48,13 @@ router.post('/signup',function(req,res) {
 	},function(err,user) {
 
 		if(err) {
+			console.log(err);
 			res.json({error:"An error has occured making your account."});
-		}
+		} else {
 
-		res.json({userId:user._id,apiToken:user.api_token});
+			console.log(user);
+			res.json({userId:user._id,apiToken:user.api_token});
+		}
 	});
 });
 
@@ -59,10 +63,6 @@ router.get('/logout',function(req,res) {
 		if(err) throw err;
 		res.json({result:1});	
 	});
-});
-
-router.get('/test',restrict,function(req,res) {
-	res.end('you are authed');
 });
 
 module.exports = router;

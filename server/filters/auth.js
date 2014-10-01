@@ -1,9 +1,17 @@
+var User = require('../models/User');
+
 function restrict(req,res,next) {
-	if(req.session.user) {
-		next();
+	
+	if(!req.query.token || !req.query.user_id) {
+		throw new Error('Credentials missing');
 	} else {
-		req.session.error = 'Not Authorized';
-		res.redirect('/users');
+		User.findOne({_id:req.query.user_id,api_token:req.query.token},function(err,user) {
+			if(err) throw err;
+			if(!user) {
+				res.json({msg:'Invalid credentials'});
+			}
+			next();
+		});
 	}
 }
 
