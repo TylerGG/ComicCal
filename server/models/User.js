@@ -20,10 +20,11 @@ UserSchema.pre('save', function(next) {
 	var user = this;
 	if(!user.isModified('password')) next();
 
-	bcrypt.genSalt(SALTINESS,function(err,salt){
+	bcrypt.genSalt(SALTINESS,function(err,salt) {
 		if(err) next(err);
 
-		bcrypt.hash(user.password,salt,function(err,hash){
+		console.log(user);
+		bcrypt.hash(user.password,salt,function(err,hash) {
 			if(err) next(err);
 			user.password = hash;
 			user.api_token = user.generateToken();

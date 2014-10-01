@@ -26,3 +26,19 @@ another alternative is install genghis, which requires ruby to be installed
 gem install genghisapp
 genghisapp
 ```
+
+
+### Routes
+
+```
+/
+/signup
+/login
+/logout
+/publishers
+/publishers/:id
+/publishers/:id/series
+/series
+/series/:id
+/series/:id/issues
+```
