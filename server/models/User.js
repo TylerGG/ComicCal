@@ -23,7 +23,6 @@ UserSchema.pre('save', function(next) {
 	bcrypt.genSalt(SALTINESS,function(err,salt) {
 		if(err) next(err);
 
-		console.log(user);
 		bcrypt.hash(user.password,salt,function(err,hash) {
 			if(err) next(err);
 			user.password = hash;
