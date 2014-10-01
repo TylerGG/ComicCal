@@ -9,7 +9,7 @@
 					<label>Email</label>
 				</div>
 				<div class="col-xs-12 col-md-6">
-					<input name="email" ng-model= "user.email" ng-required/>
+					<input name="email" ng-model= "user.email" required/>
 				</div>
 			</div>
 			<div class="row">
@@ -17,14 +17,14 @@
 					<label>Password</label>
 				</div>
 				<div class="col-xs-12 col-md-6">
-					<input name="email" ng-model= "user.email" ng-required/>
+					<input  type="password" name="email" ng-model= "user.username" required/>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-md-6">
-			<button type="button" class="btn btn-primary" name="login" ng-click="login()">Login</button>
+			<button type="button" class="btn btn-primary" name="login" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
 		</div>
 		<div class="col-xs-12 col-md-6">
 			<button type="button" class="btn btn-primary" name="register" ng-click="register()">Register</button>

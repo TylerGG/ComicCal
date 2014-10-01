@@ -1,12 +1,16 @@
 "use strict";
 var app = angular.module('comicCal');
 
-app.controller('LoginCtrl', ['$scope' ,  function($scope) {
+app.controller('LoginCtrl', ['$scope' ,'$modal',  function($scope, $modal) {
 	$scope.login = function() {
-		alert("login");
+		alert('login');
 	};
 
 	$scope.register = function() {
-		alert("register")
+		var modalInstance = $modal.open({
+			templateUrl : 'Partials/registerModal.html',
+			controller : 'registerCtrl',
+			scope : $scope
+		});
 	};
 }]);
