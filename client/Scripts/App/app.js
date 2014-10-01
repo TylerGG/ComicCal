@@ -1,1 +1,1 @@
-angular.module('comicCal', ['ngRoute', 'ui.bootstrap']);
+angular.module('comicCal', ['ngRoute', 'ui.bootstrap','LocalStorageModule']);
