@@ -1,11 +1,13 @@
 "use strict";
 var app = angular.module('comicCal');
 
-app.controller('registerCtrl', ['$scope','$modalInstance', 'userService', function($scope,$modalInstance, userService) {
+app.controller('registerCtrl', ['$scope', '$log', '$modalInstance', 'userService','appStorageService',  function($scope, $log, $modalInstance, userService, appStorageService) {
 	$scope.register = function() {
-		userService.register($scope.username, $scope.password, $scope.confirmPassword).then(
-			function(){alert("reg Success")},
-			function(){alert("error reg")}
-			);
+		userService.register($scope.username, $scope.password, $scope.confirmPassword).success(function(result){
+			appStorageService.setAPIToken(result.apiToken);
+			appStorageService.setUser(result.userId, $scope.username);
+		}).error(function(msg, code) {
+          $log.error(msg, code);
+       });
 	};
 }]);
