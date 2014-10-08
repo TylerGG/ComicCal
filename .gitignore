@@ -1,4 +1,6 @@
 server/node_modules/*
-client/bower_components/*
+client/app/bower_components/*
+client/node_modules/*
+client/scripts/dist.js
 .DS_STORE
 */.DS_STORE

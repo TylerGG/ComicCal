@@ -3,10 +3,20 @@
 Built with angularjs
 
 
-to get set up 
+## Setup
 
-bower install angular#1.2.25
-bower install angular-route#1.2.25
-bower install angular-bootstrap
-bower install angular-local-storage
-bower install bootstrap
+Ensure you have the build tools install
+```
+npm install -g bower grunt
+```
+
+Install dependencies
+```
+bower install
+npm install
+```
+
+Run gulp
+```
+gulp && gulp watch
+

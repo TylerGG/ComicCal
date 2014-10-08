@@ -1,6 +1,6 @@
 <html ng-app="comicCal">
 	<head>
-		<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+		<link href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"></link>
 		<link href="Content/Css/app.css" rel="stylesheet"></link>
 	</head>
 	<body>
@@ -29,20 +29,12 @@
 		    </div>
 		</div>
 
+	   	<script src="/app/bower_components/angular/angular.js"></script>
+	   	<script src="/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script src="/app/bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
+		<script src="/app/bower_components/angular-local-storage/dist/angular-local-storage.min.js" type="text/javascript"></script>
 
-	   	<script src="bower_components/angular/angular.js"></script>
-	   	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-		<script src="bower_components/angular-route/angular-route.min.js" type="text/javascript"></script>
-		<script src="bower_components/angular-local-storage/angular-local-storage.min.js" type="text/javascript"></script>
 
-
-		<script src="Scripts/App/app.js" type="text/javascript"></script>
-		<script src="Scripts/App/routes.js" type="text/javascript"></script>
-		<script src="Scripts/App/Controllers/dashboardCtrl.js" type="text/javascript"></script>
-		<script src="Scripts/App/Controllers/loginCtrl.js" type="text/javascript"></script>
-		<script src="Scripts/App/Controllers/addSeriesModalCtrl.js" type="text/javascript"></script>
-		<script src="Scripts/App/Controllers/registerCtrl.js" type="text/javascript"></script>
-		<script src="Scripts/App/Providers/seriesFactory.js" type="text/javascript"></script>
-		<script src="Scripts/App/Providers/userService.js" type="text/javascript"></script>
+		<script src="/scripts/dist.js"></script>
 	</body>
 </html>
