@@ -13,7 +13,7 @@ app.controller('LoginCtrl', ['$scope' ,'$modal','$log','userService','appStorage
 
 	$scope.register = function() {
 		var modalInstance = $modal.open({
-			templateUrl : 'Partials/registerModal.html',
+			templateUrl : 'partials/registerModal.html',
 			controller : 'registerCtrl',
 			scope : $scope
 		});

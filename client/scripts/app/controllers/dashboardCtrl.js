@@ -7,7 +7,7 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesFactory', function($s
 
 	$scope.followAnother = function() {
 		var modalInstance = $modal.open({
-            templateUrl: 'Partials/addSeriesModal.html',
+            templateUrl: 'partials/addSeriesModal.html',
             controller: 'addSeriesModalCtrl',
             scope: $scope
         });
