@@ -18,6 +18,8 @@ request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2
 			else if(lines[i].indexOf("\t") > -1){
 				var issue = {
 					series:lines[i].substring(lines[i].split("\t", 2).join("\t").length + 1, lines[i].indexOf("#")),
+					issueNo: lines[i].substring(lines[i].indexOf("#")+1, lines[i].indexOf("\t", lines[i].indexOf("#"))),
+					price: lines[i].substring(lines[i].indexOf("$")+1, lines[i].indexOf("\t", lines[i].indexOf("$"))),
 					publ:publisher,
 				};
 				issues.push(issue);
@@ -27,7 +29,7 @@ request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2
 			}
 		}
 		var file = fs.createWriteStream('array.txt');
-		issues.forEach(function(v) { file.write(v.series + "\t" + v.publ + '\n'); });
+		issues.forEach(function(v) { file.write(v.series + "\t" + v.publ + "\t$" + v.price + "\t#" + v.issueNo + '\n'); });
 		file.end();
 	}
 })
