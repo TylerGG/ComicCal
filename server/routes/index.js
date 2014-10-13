@@ -23,7 +23,7 @@ router.get('/auth',auth,function(req,res) {
  * Temporary route for debugging
  */
 router.get('/seed',function(req,res) {
-	Publisher.findOne({name:'Marvel'},function(err,publisher) {
+	Publisher.create({name:'Marvel'},function(err,publisher) {
 		if(err) throw err;
 		Series.create({name:'X-Men',publisher_id:publisher._id},function(err,series) {
 			if(err) throw err;
