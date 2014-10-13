@@ -17,6 +17,7 @@
     "express-session": "^1.8.2",
     "connect-mongo": "^0.4.1",
     "bcrypt": "^0.8.0",
-    "request": "^2.44.0"
+    "request": "^2.44.0",
+    "cors": "^2.4.2"
   }
 }
