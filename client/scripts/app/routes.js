@@ -8,5 +8,8 @@ app.config(['$routeProvider', function($routeProvider) {
 	}).when('/login', {
 		controller : 'LoginCtrl',
 		templateUrl : 'partials/login.html'
+	}).when('/register',{
+		controller:'RegisterCtrl',
+		templateUrl: 'partials/register.html'
 	});
 }]);
