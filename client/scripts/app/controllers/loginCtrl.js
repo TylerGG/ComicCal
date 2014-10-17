@@ -8,11 +8,10 @@ app.controller('LoginCtrl', ['$scope' ,'$modal', 'LoginService','ApiKeyService',
 				ApiKeyService.setApiKey(data.data.apiToken);
 				ApiKeyService.setUserId(data.data.userId);
 				
-	
-			} else {
-				//????	
+				window.location = '/';
 			}
 		},function(err) {
+			$scope.error = err.data.error;
 			//find out what went wrong
 			console.log(err);
 		});

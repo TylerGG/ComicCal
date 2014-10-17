@@ -4,7 +4,7 @@
 		<link href="content/css/app.css" rel="stylesheet"></link>
 	</head>
 	<body>
-		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div ng-controller="NavController" class="navbar navbar-fixed-top navbar-inverse navbar-fixed-top" role="navigation">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,14 +19,13 @@
 	          <ul class="nav navbar-nav">
 	            <li ng-click="navCollapsed = !navCollapsed" ng-class="{active: isActive('/') }"><a href="#/">Home</a></li>
 	            <li ng-click="navCollapsed = !navCollapsed" ng-class="{active: isActive('/login') }"><a href="#/login">Login</a></li>
+				<li ng-click="logout()" ><a href="#">Logout</a></li>
 	          </ul>
 	        </div><!--/.nav-collapse -->
 	      </div>
 	    </div>
-	    <div class="container">
-		    <div class="center-content">
+	    <div class="container content-wrap">
 		    	<div ng-view></div>
-		    </div>
 		</div>
 
 	   	<script src="/app/bower_components/angular/angular.js"></script>
