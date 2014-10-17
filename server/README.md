@@ -41,4 +41,19 @@ genghisapp
 /series
 /series/:id
 /series/:id/issues
+/series/:id/subscribe
+/series/:id/unsubscribe
+/users/subscriptions
 ```
+
+### Authorization filter
+
+To use certain routes auth credentials must be provided. This can be done either through the querystring or in the header.
+
+The header auth looks for:
+	* comical-user-id
+	* comical-api-token
+
+The querystring looks for:
+	* user_id
+	* api_token
