@@ -52,8 +52,8 @@ router.post('/signup',function(req,res) {
 
 router.get('/subscriptions',restrict,function(req,res) {
 
-	Subscription.find({'user_id': req.user._id},function(err,subscriptions) {
-
+	Subscription.find({'user_id': req.user._id}).populate('series_id').exec(function(err,subscriptions) {
+		
 		if(err) throw err;
 		res.json(subscriptions);
 	});
