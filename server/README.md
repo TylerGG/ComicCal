@@ -51,9 +51,9 @@ genghisapp
 To use certain routes auth credentials must be provided. This can be done either through the querystring or in the header.
 
 The header auth looks for:
-	* comical-user-id
-	* comical-api-token
+  * comical-user-id
+  * comical-api-token
 
 The querystring looks for:
-	* user_id
-	* api_token
+  * user_id
+  * api_token
