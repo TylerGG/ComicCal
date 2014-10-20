@@ -9,6 +9,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var publishers = require('./routes/publishers');
+var series = require('./routes/series');
 var config = require('./config');
 
 var app = express();
@@ -35,6 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/publishers', publishers);
+app.use('/series', series);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -45,7 +49,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.json({
             message: err.message,
             error: err
         });
@@ -54,7 +58,7 @@ if (app.get('env') === 'development') {
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render({
         message: err.message,
         error: {}
     });
