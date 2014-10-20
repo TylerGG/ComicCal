@@ -4,9 +4,9 @@ var app = angular.module('comicCal');
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		controller: 'DashboardCtrl',
-		templateUrl : 'Partials/dashboard.html'
+		templateUrl : 'partials/dashboard.html'
 	}).when('/login', {
 		controller : 'LoginCtrl',
-		templateUrl : 'Partials/login.html'
+		templateUrl : 'partials/login.html'
 	});
 }]);
