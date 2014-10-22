@@ -1,8 +1,12 @@
-var app = angular.module('comicCal', ['ngRoute', 'ui.bootstrap','LocalStorageModule']);
-app.constant('ENVIORMENT','DEV');
 
-var SERVER_PATH = [];
-SERVER_PATH["DEV"] = "http://localhost:3000/";
-SERVER_PATH["PROD"] = "";
+angular.module('comicCal', ['ngRoute', 'ui.bootstrap','LocalStorageModule'])
+.run(['$rootScope',function($rootScope) {
+	$rootScope.root_url = 'http://127.0.0.1:3000';
+}])
+.config(function($sceDelegateProvider) {
+	$sceDelegateProvider.resourceUrlWhitelist([
+		'self',
+		'http://127.0.0.1:3000'
+	]);
+});
 
-app.constant('SERVER_PATH', SERVER_PATH );
