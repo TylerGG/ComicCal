@@ -1,10 +1,16 @@
-var request = require('request');
-var fs = require('fs');
-var util = require('util');
-var reg = /PAGE \d+/;
-var issues = [];
-var publisher = "";
-request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2014/SEP14_COF.txt', function (error, response, body) {
+var request = require('request'),
+	mongoose = require('mongoose'),
+	fs = require('fs'),
+	util = require('util'),
+	reg = /PAGE \d+/,
+	issues = [],
+	publishers = [],
+	series = [],
+	publisher = "",
+	connectionString = require('./config').mongo;
+//mongoose.connect(connectionString);
+//var db = mongoose.connection;
+request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2014/AUG14_COF.txt', function (error, response, body) {
 	if(!error && response.statusCode == 200) {
 		var lines = body.split("\r\n");
 		lines.splice(0,lines.indexOf("PREMIER PUBLISHERS")+1);
@@ -26,13 +32,20 @@ request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2
 				if(issue.issueNo.indexOf("\t") > 0)
 					issue.issueNo = issue.issueNo.substring(0, issue.issueNo.indexOf("\t"));
 				issues.push(issue);
+				var ser = {
+					name: issue.series,
+					pub: publisher, 
+				};
+				series[issue.series] = publisher;
 			}
 			else {
 				publisher = lines[i];
+				publishers[publisher] = true;
 			}
 		}
 		var file = fs.createWriteStream('array.txt');
 		issues.forEach(function(v) { file.write("Series: " +  v.series + '\t' + "Issue No: " +  v.issueNo + '\t' + "Price: " +  v.price + '\t' + "date: " +  v.date + '\t' + "publisher: " +  v.publisher + '\n'); });
+		Object.keys(series).forEach(function (s) { file.write(s + "\t" + series[s] + "\n");});
 		file.end();
 	}
 })
