@@ -5,8 +5,8 @@ app.controller('RegisterCtrl', ['$scope', 'ApiKeyService','userService', functio
 	$scope.register = function() {
 		userService.register($scope.credentials).then(function(data) {
 
-			ApiKeyService.setApiKey(data.apiToken);
-			ApiKeyService.setUserId(data.userId);
+			ApiKeyService.setApiKey(data.data.apiToken);
+			ApiKeyService.setUserId(data.data.userId);
 			window.location = '/';
 			console.log('totally registered!');
 		},function(err) {

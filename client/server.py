@@ -8,7 +8,7 @@ def test(HandlerClass=SimpleHTTPRequestHandler,
 
     protocol = "HTTP/1.0"
     host = ''
-    port = 8000
+    port = 8005
     if len(sys.argv) > 1:
         arg = sys.argv[1]
         if ':' in arg:

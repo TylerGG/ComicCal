@@ -1,3 +1,4 @@
+{{publishers}}
 <div class="center-content">
 	<form name="addSeries" >
 		<div class="row">
@@ -5,7 +6,7 @@
 				<label>Select A Publisher</label>
 			</div>
 			<div class="col-md-6">
-				<select ng-options="p as p for p in publishers" name="publisher" ng-model="publisher" ng-change="publisherChange()">
+				<select ng-options="p as p.name for p in publishers" name="publisher" ng-model="publisher" ng-change="publisherChange()">
 				</select>
 			</div>
 		</div>
@@ -14,7 +15,7 @@
 				<label>Select A Series</label>
 			</div>
 			<div class="col-md-6">
-				<select ng-disabled="!publisher" ng-options="s as s for s in seriesList" name="series" ng-model="series"></select>
+				<select ng-disabled="!publisher" ng-options="s as s.name for s in seriesList" name="series" ng-model="series"></select>
 			</div>
 		</div>
 		<div class="row">
