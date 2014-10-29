@@ -1,7 +1,7 @@
 "use strict";
 var app = angular.module('comicCal');
 
-app.controller('DashboardCtrl', ['$scope', '$modal','SeriesFactory','ApiKeyService', function($scope, $modal, SeriesFactory,ApiKeyService) {
+app.controller('DashboardCtrl', ['$scope', '$modal','SeriesService','ApiKeyService', function($scope, $modal, SeriesService,ApiKeyService) {
 
 
 	if(!ApiKeyService.hasCredentials()) {
@@ -9,7 +9,11 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesFactory','ApiKeyServi
 		window.location = '/#/login';
 	}
 
-	$scope.series = SeriesFactory.subscribedSeries();
+	SeriesService.subscribedSeries().then(function(data) {
+		$scope.series = data;
+	}); 
+
+	
 
 	$scope.followAnother = function() {
 		var modalInstance = $modal.open({

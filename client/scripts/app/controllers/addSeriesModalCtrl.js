@@ -1,16 +1,20 @@
 "use strict";
 var app = angular.module('comicCal');
 
-app.controller('addSeriesModalCtrl', ['$scope','$modalInstance','SeriesFactory', function($scope,$modalInstance, SeriesFactory) {
+app.controller('addSeriesModalCtrl', ['$scope','$modalInstance','SeriesService', function($scope,$modalInstance, SeriesService) {
 
 	// $modalInstance.close();
 
 
 	$scope.series = "";
-	$scope.publishers = SeriesFactory.publishers();
+	SeriesService.publishers().then(function(data){
+		$scope.publishers = data;
+	})
 
 	$scope.publisherChange = function() {
-		$scope.seriesList = SeriesFactory.seriesByPublisher($scope.publisher);
+		SeriesService.seriesByPublisher($scope.publisher).then(function(data) {
+			$scope.seriesList = data;	
+		});
 		$scope.series = "";
 	};
 
