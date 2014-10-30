@@ -5,9 +5,8 @@ var updateSubscriptionJob = require('../jobs/UpdateSubscriptionJob');
 var updateTimestamps = require('./util').updateTimestamps;
 
 var IssueSchema = new mongoose.Schema({
-	name: { type:String,require:true, index:{unique:true}},
-	series_id: { type:ObjectId,require:true},
-	issue_no: { type:Number,require:true},
+	series_id: { type:ObjectId,require:true, index:{unique:true}},
+	issue_no: { type:Number,require:true, index:{unique:true}},
 	release_date:{type:Date,require:true},
 	created_at:{type:Date,require:true},
 	updated_at:{type:Date,require:true}
