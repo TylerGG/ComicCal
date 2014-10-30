@@ -18,8 +18,11 @@ app.controller('addSeriesModalCtrl', ['$scope','$modalInstance','SeriesService',
 		$scope.series = null;
 	};
 
+	
 	$scope.add = function() {
-		alert('ADD!!');
+		SeriesService.addSubscription($scope.series._id).then(function(data){
+			var x = data;
+		});
 	};
 	
 }]);

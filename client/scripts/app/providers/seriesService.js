@@ -25,5 +25,11 @@ app.factory('SeriesService',[ '$rootScope', '$http', 'ApiKeyService', function($
 	    });
 	};
 
+	factory.addSubscription = function(series_id){
+		return $http.post(rootUrl + '/series/' + series_id + '/subscribe', {
+			headers: ApiKeyService.getHttpHeaders()
+		});
+	};
+
 	return factory;
 }]);
