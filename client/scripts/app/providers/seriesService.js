@@ -8,23 +8,20 @@ app.factory('SeriesService',[ '$rootScope', '$http', 'ApiKeyService', function($
 	var rootUrl = $rootScope.root_url;
 
 	factory.subscribedSeries = function(user_id) {
-		var credentials = ApiKeyService.getCredentials();
-		return $http.get(rootUrl + '/users/subscriptions/' + credentials.user_id,{
- 			 headers: { 'comical-user-id': credentials.user_id , 'comical-api-token':credentials.api_key }
+		return $http.get(rootUrl + '/users/subscriptions/',{
+ 			 headers: ApiKeyService.getHttpHeaders()
 	    });
 	};
 
 	factory.publishers = function() {
-		var credentials = ApiKeyService.getCredentials();
 		return $http.get(rootUrl + '/publishers',{
- 			 headers: { 'comical-user-id': credentials.user_id , 'comical-api-token':credentials.api_key }
+ 			 headers: ApiKeyService.getHttpHeaders()
 	    });
 	};
 
 	factory.seriesByPublisher = function (publisher) {
-		var credentials = ApiKeyService.getCredentials();
 		return $http.get(rootUrl + '/publishers/' + publisher + '/series',{
- 			 headers: { 'comical-user-id': credentials.user_id , 'comical-api-token':credentials.api_key }
+ 			 headers: ApiKeyService.getHttpHeaders()
 	    });
 	};
 

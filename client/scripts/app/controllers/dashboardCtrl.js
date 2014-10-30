@@ -10,7 +10,7 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesService','ApiKeyServi
 	}
 
 	SeriesService.subscribedSeries().then(function(data) {
-		$scope.series = data;
+		$scope.series = data.data;
 	}); 
 
 	
