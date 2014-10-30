@@ -25,11 +25,29 @@ app.factory('SeriesService',[ '$rootScope', '$http', 'ApiKeyService', function($
 	    });
 	};
 
-	factory.addSubscription = function(series_id){
-		return $http.post(rootUrl + '/series/' + series_id + '/subscribe', {
+	factory.subscribe = function(series_id){
+		var URL = rootUrl + '/series/' + series_id + '/subscribe';
+		$http({
+			method: 'POST', 
+			url: URL, 
 			headers: ApiKeyService.getHttpHeaders()
-		});
+		}).success(function(data, status, headers, config) {
+			if( data.Result = "OK" ){
+				alert("Subscription Added");
+			}
+  		});
 	};
-
+	factory.unsubscribe = function(series_id){
+		var URL = rootUrl + '/series/' + series_id + '/unsubscribe';
+		$http({
+			method: 'POST', 
+			url: URL, 
+			headers: ApiKeyService.getHttpHeaders()
+		}).success(function(data, status, headers, config) {
+			if( data.Result = "OK" ){
+				alert("Subscription Removed");
+			}
+  		});
+	};
 	return factory;
 }]);

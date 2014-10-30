@@ -1,4 +1,3 @@
-{{series}}
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">Series You Follow</h3>
@@ -7,6 +6,7 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
+					<td>Remove</td>
 					<td>Title</td>
 					<td>Publisher</td>
 					<td>Current Issue</td>
@@ -15,7 +15,12 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="s in series">
-					<td>{{s.title}}</td>
+					<td>
+						<button type="submit" class="btn btn-default" ng-click="unsubscribe( s.series_id._id )">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>
+					</td>
+					<td>{{s.series_id.name}}</td>
 					<td>{{s.publisher}}</td>
 					<td>{{s.currentIssue}}</td>
 					<td>{{s.nextIssueDate}}</td>

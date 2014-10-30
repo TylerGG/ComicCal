@@ -12,8 +12,13 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesService','ApiKeyServi
 	SeriesService.subscribedSeries().then(function(data) {
 		$scope.series = data.data;
 	}); 
+	$scope.unsubscribe = function( series_id ){
+		$scope.series_id = series_id;
+		SeriesService.unsubscribe($scope.series_id).then( function( res ) {
+			alert("Done");
+		});
+	}
 
-	
 
 	$scope.followAnother = function() {
 		var modalInstance = $modal.open({

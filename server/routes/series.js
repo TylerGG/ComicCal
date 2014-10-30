@@ -28,6 +28,7 @@ router.get('/:seriesId',function(req,res) {
 });
 
 router.post('/:seriesId/subscribe',restrict,function(req,res) {
+
 	Subscription.findOne({series_id:req.series._id,user_id:req.user._id},function(err,subscription) {
 		if(err) throw err;
 		if(subscription) {
