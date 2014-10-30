@@ -32,10 +32,6 @@ request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2
 				if(issue.issueNo.indexOf("\t") > 0)
 					issue.issueNo = issue.issueNo.substring(0, issue.issueNo.indexOf("\t"));
 				issues.push(issue);
-				var ser = {
-					name: issue.series,
-					pub: publisher, 
-				};
 				series[issue.series] = publisher;
 			}
 			else {
