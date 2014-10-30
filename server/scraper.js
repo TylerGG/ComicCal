@@ -3,7 +3,6 @@ var request = require('request'),
 	Series = require('./models/Series'),
 	Publisher = require('./models/Publisher'),
 	Issue = require('./models/Issue'),
-	fs = require('fs'),
 	util = require('util'),
 	reg = /PAGE \d+/,
 	issues = [],
@@ -17,7 +16,6 @@ db.on('error',function(err) {
 	console.log('error connecting to db');
 	throw err;
 });
-
 db.once('open',function() {
 	console.log('connection established');
 	request('http://www.previewsworld.com/support/previews_docs/orderforms/archive/2014/AUG14_COF.txt', function (error, response, body) {
@@ -52,25 +50,32 @@ db.once('open',function() {
 					
 				}
 			}
-			var file = fs.createWriteStream('array.txt');
-			issues.forEach(function(v) { file.write("Series: " +  v.series + '\t' + "Issue No: " +  v.issueNo + '\t' + "Price: " +  v.price + '\t' + "date: " +  v.date + '\t' + "publisher: " +  v.publisher + '\n'); });
-			Object.keys(series).forEach(function (s) { file.write(s + "\t" + series[s] + "\n");});
-			file.end();
 			Object.keys(publishers).forEach(function (p){
-				console.log(p);
 				Publisher.findOneOrCreate({name: p}, {name: p}, function(err, person) {
 					if(err != null)
-						console.log(err);
+						console.log("Error adding Publisher: " + p + "\t" + err);
 				});
 			});
 			Object.keys(series).forEach(function (s){ 
 				Series.findOneOrCreate({name: s}, {name: s, Publisher_ID: Publisher.distinct('_id', {name: Series[s] })[0]}, function(err, person) {
 					if(err != null)
-						console.log(err);
+						console.log("Error adding Series: " + s + "\t" + err);
+				});
+			});
+			issues.forEach(function(v) { 
+				Issue.findOneOrCreate({
+					series_id: Series.distinct('_id', {name: v.series})[0], 
+					issue_no: v.issueNo}, {
+						series_id: Series.distinct('_id', {name: v.series})[0], 
+						issue_no: v.issueNo, 
+						release_date: v.date,
+						price: v.price
+					}, function(err, person) {
+					if(err != null)
+						console.log("Error adding Issue: " +  v.series + " #" + v.issueNo + "\t" + err);
 				});
 			});
 			console.log('done');
 		}
 	});
 });
-//mongoose.connection.close();

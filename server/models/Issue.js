@@ -5,8 +5,9 @@ var updateSubscriptionJob = require('../jobs/UpdateSubscriptionJob');
 var updateTimestamps = require('./util').updateTimestamps;
 
 var IssueSchema = new mongoose.Schema({
-	series_id: { type:ObjectId,require:true, index:{unique:true}},
-	issue_no: { type:Number,require:true, index:{unique:true}},
+	series_id: { type:ObjectId,require:true},
+	issue_no: { type:Number,require:true},
+	price: { type:Number, require:true},
 	release_date:{type:Date,require:true},
 	created_at:{type:Date,require:true},
 	updated_at:{type:Date,require:true}
@@ -16,7 +17,7 @@ IssueSchema.plugin(findOneOrCreate);
 
 IssueSchema.pre('save',function(next,done) {
 	if(!this.created_at)  {
-		console.log('This is a new issue! Fire off the subscription update job!');
+		//console.log('This is a new issue! Fire off the subscription update job!');
 	}
 	next();
 	updateSubscriptionJob(this,done);
