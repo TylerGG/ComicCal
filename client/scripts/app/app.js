@@ -1,4 +1,4 @@
-angular.module('comicCal', ['ngRoute', 'ui.bootstrap','LocalStorageModule'])
+angular.module('comicCal', ['ngRoute', 'ui.bootstrap'])
 .run(['$rootScope',function($rootScope) {
 	$rootScope.root_url = 'http://127.0.0.1:3000';
 }])
