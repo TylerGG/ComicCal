@@ -15,7 +15,7 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesService','ApiKeyServi
 	$scope.unsubscribe = function( series_id ){
 		$scope.series_id = series_id;
 		SeriesService.unsubscribe($scope.series_id).then( function( res ) {
-			alert("Done");
+			alert(res.data.Result);
 		});
 	}
 
@@ -26,9 +26,7 @@ app.controller('DashboardCtrl', ['$scope', '$modal','SeriesService','ApiKeyServi
             controller: 'addSeriesModalCtrl',
             scope: $scope
         });
-
 		modalInstance.result.then(function(results){});
-
 	};
 	
 }]);

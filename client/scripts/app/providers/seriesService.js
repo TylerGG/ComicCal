@@ -27,7 +27,7 @@ app.factory('SeriesService',[ '$rootScope', '$http', 'ApiKeyService', function($
 
 	factory.subscribe = function(series_id){
 		var URL = rootUrl + '/series/' + series_id + '/subscribe';
-		$http({
+		return $http({
 			method: 'POST', 
 			url: URL, 
 			headers: ApiKeyService.getHttpHeaders()
@@ -39,7 +39,7 @@ app.factory('SeriesService',[ '$rootScope', '$http', 'ApiKeyService', function($
 	};
 	factory.unsubscribe = function(series_id){
 		var URL = rootUrl + '/series/' + series_id + '/unsubscribe';
-		$http({
+		return $http({
 			method: 'POST', 
 			url: URL, 
 			headers: ApiKeyService.getHttpHeaders()

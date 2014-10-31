@@ -20,8 +20,8 @@ app.controller('addSeriesModalCtrl', ['$scope','$modalInstance','SeriesService',
 
 	
 	$scope.add = function() {
-		SeriesService.subscribe($scope.series._id).then(function(data){
-			var x = data;
+		SeriesService.subscribe($scope.series._id).then(function(res){
+			alert(res.data.subscription._id);
 		});
 	};
 	
