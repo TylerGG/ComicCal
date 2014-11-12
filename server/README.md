@@ -57,3 +57,13 @@ The header auth looks for:
 The querystring looks for:
   * user_id
   * api_token
+
+
+### Cluster branch
+
+Use node 0.11+
+
+```
+npm install -g pm2
+pm2 start app.js -i max
+```

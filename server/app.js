@@ -8,12 +8,25 @@ var MongoStore = require('connect-mongo')(session);
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
+//CLUSTER!
+var cluster = require('cluster');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var publishers = require('./routes/publishers');
 var series = require('./routes/series');
 var config = require('./config');
 
+
+if(cluster.isMaster) {
+
+    var cpuCount = require('os').cpus().length;
+	console.log('parent, spawning: ' + cpuCount);
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
+
+} else {
 var app = express();
 
 //connect to mongo
@@ -67,4 +80,6 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000);
-console.log('app listening on 3000');
+console.log('worker: ' + cluster.worker.id +' app listening on 3000');
+
+}
