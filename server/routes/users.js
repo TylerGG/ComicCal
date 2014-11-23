@@ -1,8 +1,11 @@
 var express = require('express');
+var async = require('async');
 var router = express.Router();
 var User = require('../models/User');
 var Subscription = require('../models/Subscription');
+var Issue = require('../models/Issue');
 var restrict = require('../filters/auth');
+
 
 router.post('/login',function(req,res) {
 	var form = req.body;
@@ -54,6 +57,7 @@ router.post('/signup',function(req,res) {
 
 router.get('/subscriptions',restrict,function(req,res) {
 
+	var issues = [];
 	Subscription.find({'user_id': req.user._id}).populate('series_id').exec(function(err,subscriptions) {
 		if(err) throw err;
 		var options = {
@@ -61,7 +65,27 @@ router.get('/subscriptions',restrict,function(req,res) {
 			model:'Publisher'
 		};
 		Subscription.populate(subscriptions,options,function(err,subscriptions) {
-			res.json(subscriptions);
+			async.eachSeries(subscriptions,function(subscription,cb) {
+
+				var series_id = subscription.series_id._id;
+				Issue.findOne({series_id:series_id}).sort({release_date: -1})
+				.exec(function(err,issue) {
+					if(err) throw err;
+
+					issues.push(issue);
+					cb();
+				});
+
+			},function(err) {
+				if(err) throw err;
+
+				for(var i =0;i < subscriptions.length;i++) {
+					subscriptions[i] = subscriptions[i].toObject();
+					subscriptions[i].latest_issue = issues[i];
+				}
+
+				res.json(subscriptions);
+			});
 		});
 	});
 
