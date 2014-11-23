@@ -6,24 +6,25 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<td>Remove</td>
 					<td>Title</td>
 					<td>Publisher</td>
 					<td>Current Issue</td>
 					<td>Next Issue Release Date</td>
+					<td>Remove</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="s in series">
+					
+					<td>{{s.series_id.name}}</td>
+					<td>{{s.series_id.publisher_id.name}}</td>
+					<td>{{s.currentIssue}}</td>
+					<td>{{s.nextIssueDate}}</td>
 					<td>
-						<button type="submit" class="btn btn-default" ng-click="unsubscribe( s.series_id._id )">
+						<button type="submit" class="btn btn-default" ng-click="unsubscribe(s)">
 							<span class="glyphicon glyphicon-remove"></span>
 						</button>
 					</td>
-					<td>{{s.series_id.name}}</td>
-					<td>{{s.publisher}}</td>
-					<td>{{s.currentIssue}}</td>
-					<td>{{s.nextIssueDate}}</td>
 				</tr>
 			</tbody>
 		</table>
