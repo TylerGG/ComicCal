@@ -45,7 +45,8 @@ comiclist(function(issues) {
 			Series.findOneAndUpdate({name:title,publisher_id:publisher._id},{name:title,publisher_id:publisher._id},opts,function(err,series) {
 				if(err) throw err;
 
-				Issue.findOneAndUpdate({series_id:series._id,issue_no:issue.issue_num, release_date:issue.release_date,price:2.99},{series_id:series._id,issue_no:issue.issue_num, release_date:issue.release_date,price:2.99},opts,function(err,iss) {
+				var price = issue.price || 0.0;
+				Issue.findOneAndUpdate({series_id:series._id,issue_no:issue.issue_num, release_date:issue.release_date,price:price},{series_id:series._id,issue_no:issue.issue_num, release_date:issue.release_date,price:price},opts,function(err,iss) {
 					if(err) throw err;
 					cb();
 				});
