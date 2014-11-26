@@ -32,11 +32,11 @@ router.post('/:seriesId/subscribe',restrict,function(req,res) {
 	Subscription.findOne({series_id:req.series._id,user_id:req.user._id},function(err,subscription) {
 		if(err) throw err;
 		if(subscription) {
-			res.status(400).json({'Result':'Subscription already exists'});	
+			res.status(400).json({'result':'Subscription already exists'});	
 		} else {
 			Subscription.create({series_id:req.series._id,user_id:req.user._id},function(err,subscription){
 				if(err) throw err;
-				res.json({'Result':'OK',subscription:subscription});
+				res.json({'result':'OK',subscription:subscription});
 			});
 		}
 	});
@@ -48,11 +48,11 @@ router.post('/:seriesId/unsubscribe',restrict,function(req,res) {
 	Subscription.findOne({series_id:req.series._id,user_id:req.user._id},function(err,subscription) {
 		if(err) throw err;
 		if(!subscription) {
-			res.status(400).json({'Result':'Subscription not found.'});	
+			res.status(400).json({'result':'Subscription not found.'});	
 		} else {
 			Subscription.remove({series_id:req.series._id,user_id:req.user._id},function(err) {
 				if(err) throw err;
-				res.status(200).json({'Result':'OK'});
+				res.status(200).json({'result':'OK'});
 			});
 		}
 	});
