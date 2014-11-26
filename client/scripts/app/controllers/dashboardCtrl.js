@@ -16,7 +16,6 @@ angular.module('comicCal')
 			if(res.data.result === 'OK') {
 				$scope.series.splice($scope.series.indexOf(subscription,1));
 			}
-			console.log(res);
 		});
 	}
 

@@ -20,7 +20,7 @@
 					<td>{{s.series_id.publisher_id.name}}</td>
 					<td>{{s.latest_issue.issue_no | issueNum }}</td>
 					<td>{{s.latest_issue.release_date | releaseDate}}</td>
-					<td><div addthisevent></div></td>
+					<td><div addthisevent subscription="s"></div></td>
 					<td
 						<button type="submit" class="btn btn-clear" ng-click="unsubscribe(s)">
 							<span class="glyphicon glyphicon-remove"></span>
