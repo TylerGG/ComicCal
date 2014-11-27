@@ -68,11 +68,16 @@ body{
 	background-color: #ceddeb;
 	text-align: center;
 	padding: 10px;
+	margin-bottom:15px;
 
 }
 .form-header h3, h2{
 	margin: 0;
 }
+.modal-btn {
+	margin-top:10px;
+}
+
 .form-panel{
 	z-index: 0;
 	float: none;
