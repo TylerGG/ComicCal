@@ -6,14 +6,13 @@
 	margin-top:25px;
 }
 
-.btn.follow {
-	margin-left:15px;
-	margin-bottom:15px;
+.follow{
+	padding-bottom: 10px;
 }
 
 .add-modal.header{
 	display:inline-block;
-	background-color:#428bca;
+	background-color: #428bca;
 	color:#FFFFFF;
 	width:100%;
 	border-radius:5px 5px 0 0;
@@ -57,11 +56,62 @@ body{
 	background-image:url('/img/dark-circles.png');
 
 }
-.form-panel{
-	float: none;
-	padding: 20px;
-	background-color: white;
-	border-radius: 10px;
+.form-header{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+	z-index: 1;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	background-color: #ceddeb;
+	text-align: center;
+	padding: 10px;
+
 }
+.form-header h3, h2{
+	margin: 0;
+}
+.form-panel{
+	z-index: 0;
+	float: none;
+	background-color: white;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 20px 20px 5px 20px;
+}
+.shadow{
+	-webkit-box-shadow: 5px 5px 19px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    5px 5px 19px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         5px 5px 19px 0px rgba(50, 50, 50, 0.75);
+
+}
+.series{
+	float: none; 
+	padding: 0;
+}
+.info{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+	background-color: #e6f4ff;
+	background-image: url("/img/circles.png");
+	padding: 15px 10px 10px 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #840d00;
+	border-radius: 5px;
+	float: none;
+	font-size: 17px;
+}
+
+.btn{
+	color: black;
+	background-color: #a7c7e0;
+	border-color: #a7c7e0;
+}
+
+
 .addthisevent {visibility:hidden;}.addthisevent-drop ._url,.addthisevent-drop ._start,.addthisevent-drop ._end,.addthisevent-drop ._zonecode,.addthisevent-drop ._summary,.addthisevent-drop ._description,.addthisevent-drop ._location,.addthisevent-drop ._organizer,.addthisevent-drop ._organizer_email,.addthisevent-drop ._attendees,.addthisevent-drop ._facebook_event,.addthisevent-drop ._all_day_event {display:none!important;}
 .addthisevent-drop {display:inline-block;position:relative;font-family:arial;color:#333!important;background:#f4f4f4 url(http://addthisevent.com/gfx/icon-calendar-t1.png) no-repeat 9px 50%;text-decoration:none!important;border:1px solid #d9d9d9;color:#555;font-weight:bold;font-size:14px;text-decoration:none;padding:9px 12px 8px 35px;-moz-border-radius:2px;-webkit-border-radius:2px;}.addthisevent-drop:hover {border:1px solid #aab9d4;color:#555;font-weight:bold;font-size:14px;text-decoration:none!important;}.addthisevent-drop:active {top:1px;}.addthisevent-selected {background-color:#f7f7f7;}.addthisevent_dropdown {width:200px;position:absolute;z-index:99999;padding:6px 0px 0px 0px;background:#fff;text-align:left;display:none;margin-top:-2px;margin-left:-1px;border-top:1px solid #c8c8c8;border-right:1px solid #bebebe;border-bottom:1px solid #a8a8a8;border-left:1px solid #bebebe;-moz-border-radius:2px;-webkit-border-radius:2px;-webkit-box-shadow:1px 3px 6px rgba(0,0,0,0.15);-moz-box-shadow:1px 3px 6px rgba(0,0,0,0.15);box-shadow:1px 3px 6px rgba(0,0,0,0.15);}.addthisevent_dropdown span {display:block;cursor:pointer;line-height:110%;background:#fff;text-decoration:none;font-size:12px;color:#6d84b4;padding:8px 10px 9px 15px;}.addthisevent_dropdown span:hover {background:#f4f4f4;color:#6d84b4;text-decoration:none;font-size:12px;}.addthisevent span {display:none!important;}.addthisevent-drop ._url,.addthisevent-drop ._start,.addthisevent-drop ._end,.addthisevent-drop ._zonecode,.addthisevent-drop ._summary,.addthisevent-drop ._description,.addthisevent-drop ._location,.addthisevent-drop ._organizer,.addthisevent-drop ._organizer_email,.addthisevent-drop ._facebook_event,.addthisevent-drop ._all_day_event {display:none!important;}.addthisevent_dropdown .copyx {width:200px;height:21px;display:block;position:relative;cursor:default;}.addthisevent_dropdown .brx {width:180px;height:1px;overflow:hidden;background:#e0e0e0;position:absolute;z-index:100;left:10px;top:9px;}.addthisevent_dropdown .frs {position:absolute;top:5px;cursor:pointer;right:10px;padding-left:10px;font-style:normal;font-weight:normal;text-align:right;z-index:101;line-height:110%;background:#fff;text-decoration:none;font-size:9px;color:#cacaca;}.addthisevent_dropdown .frs:hover {color:#6d84b4;}

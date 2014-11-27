@@ -1,22 +1,29 @@
-<div class="row ">
-	<div class="form-panel center-block col-lg-6 col-md-6">
-		<h3>Login</h3>
+<div class="row">
+	<div class="info col-lg-6 col-md-6 center-block info">
+		<p>Comical is a platform for managing and tracking your future comic pull release dates. </p>
+		<p>Add comics by publisher and keep track of what is coming out when. </p>
+	</div>
+</div>
+<div class="row">
+	<div class="form-header center-block col-lg-3 col-md-3" style="float: none;" ><h3>Login</h3></div>
+	<div class="form-panel center-block col-lg-3 col-md-3">
 		<div class="alert alert-danger" ng-show="error">
 			{{error}}
 		</div>
 		<form role="form" class="form" name="loginForm">
-			<div class="form-group">
-				<label for="username">Username</label> 
-				<input name="username" type="text" ng-model="credentials.username" required/>
+			<div class="row center-block form-group">
+				<label class="col-lg-6" for="username">Username</label> 
+				<input class="col-lg-6" name="username" type="text" ng-model="credentials.username" required/>
+			</div>
+			<div class="row center-block form-group">
+				<label class="col-lg-6" for="password">Password</label> 
+				<input class="col-lg-6" name="password" type="password" ng-model="credentials.password" required/>
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label> 
-				<input name="password" type="password" ng-model="credentials.password" required/>
+				<button class="btn btn-primary col-lg-3 center-block" style="float:none;" name="login" ng-click="login()">Login</button>
+				<a href="#/register" class="col-lg-10 center-block text-center" style="float:none;" >Don't have an account?</a>
 			</div>
-			<div class="form-group">
-				<button class="btn btn-primary" name="login" ng-click="login()">Login</button>
-				<a href="#/register">Don't have an account?</a>
-			</div>
+
 		</form>
 	</div>
 
