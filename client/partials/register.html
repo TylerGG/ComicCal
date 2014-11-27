@@ -1,25 +1,24 @@
 <div class="row">
-	<div class="form-header center-block col-lg-3 col-md-3" style="float: none;"><h2>Register</h2></div> 
-
-	<div class="col-lg-6 col-md-6 form-panel center-block" >
+	<div class="form-header center-block col-lg-4 col-md-4" style="float: none;"><h3>Register</h3></div> 
+	<div class="col-lg-4 col-md-4 form-panel center-block" >
 		<div class="alert alert-danger" ng-show="error">
 			{{error}}
 		</div>
 		<form role="form" class="form" name="registerForm">
 			<div class="form-group row">
-				<label for="username" class="col-lg-3">Username</label> 
-				<input name="username" class="col-lg-3" type="text" ng-model="credentials.username" required/>
+				<label for="username" class="col-lg-6 text-right">Username</label> 
+				<input name="username" class="col-lg-5" type="text" ng-model="credentials.username" required/>
 			</div>
 			<div class="form-group row">
-				<label for="password" class="col-lg-3">Password</label> 
-				<input name="password" class="col-lg-3" type="password" ng-model="credentials.password" required/>
+				<label for="password" class="col-lg-6 text-right">Password</label> 
+				<input name="password" class="col-lg-5" type="password" ng-model="credentials.password" required/>
 			</div>
 			<div class="form-group row">
-				<label for="cornfirm_password" class="col-lg-3">Confirm Password</label> 
-				<input name="confirm_password" class="col-lg-3" type="password" ng-model="credentials.confirm_password" required/>
+				<label for="cornfirm_password" class="col-lg-6 text-right">Confirm Password</label> 
+				<input name="confirm_password" class="col-lg-5" type="password" ng-model="credentials.confirm_password" required/>
 			</div>
 			<div class="form-group row">
-				<button class="btn btn-primary col-lg-2 center-block" style="float:none;" name="login" ng-click="register()">Register</button>
+				<button class="btn btn-primary col-lg-3 center-block" style="float:none;" name="login" ng-click="register()">Register</button>
 			</div>
 		</form>
 	</div>
