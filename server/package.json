@@ -20,6 +20,7 @@
     "request": "^2.44.0",
     "cors": "^2.4.2",
     "async": "^0.9.0",
-    "comic-list": "^0.2.0"
+    "comic-list": "^0.2.0",
+    "mongoose-find-one-or-create": "^0.2.0"
   }
 }
